@@ -19,7 +19,7 @@ let postplugins = [autoprfixer];
 /**
  * task for livereload page in browser
  */
-gulp.task('livereload', () => {
+gulp.task('browser-sync', () => {
     browserSync({
         server: {
             baseDir: 'public'
@@ -36,7 +36,6 @@ gulp.task('styles', () => {
         .pipe(stylus())
         .pipe(postcss(postplugins))
         .pipe(gulp.dest('./public/css'))
-        .pipe(livereload())
 });
 
 /**
@@ -46,7 +45,6 @@ gulp.task('pages', () => {
     return gulp.src('./source/pages/*.pug')
         .pipe(pug({ pretty: true }))
         .pipe(gulp.dest('./public'))
-        .pipe(livereload())
 });
 
 /**
@@ -57,7 +55,6 @@ gulp.task('scripts', () => {
         .pipe(concat('libs.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./public'))
-        .pipe(livereload())
 });
 
 /**
@@ -74,14 +71,12 @@ gulp.task('images', () => {
             une: [pngquant]
         })))
         .pipe(gulp.dest('./public/images'))
-        .pipe(livereload())
 });
 
-gulp.task('watch', () => {
-    var server = livereload();
-    gulp.watch(['./source/**/*.styl', './source/styles/*.styl'], ['styles']);
-    gulp.watch('./source/blocks/**/*.pug', ['pages']);
-    gulp.watch('./source//blocks/**/*.js', ['scripts']);
+gulp.task('watch', ['browser-sync', 'pages', 'styles', 'scripts', 'images'], () => {
+    gulp.watch(['./source/**/*.styl', './source/styles/*.styl'], ['styles', browserSync.reload]);
+    gulp.watch('./source/blocks/**/*.pug', ['pages', browserSync.reload]);
+    gulp.watch('./source//blocks/**/*.js', ['scripts', browserSync.reload]);
     gulp.watch('./images/*', ['images']);
 });
 
