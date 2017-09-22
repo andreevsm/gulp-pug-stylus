@@ -43,7 +43,9 @@ gulp.task('styles', () => {
  */
 gulp.task('pages', () => {
     return gulp.src('./source/pages/*.pug')
-        .pipe(pug({ pretty: true }))
+        .pipe(pug({
+            pretty: true
+        }))
         .pipe(gulp.dest('./public'))
 });
 
@@ -51,11 +53,19 @@ gulp.task('pages', () => {
  * task for processing .js files
  */
 gulp.task('scripts', () => {
-    return gulp.src('./source/blocks/**/*.js')
+    return gulp.src(['./source/blocks/**/*.js',
+            './source/libs/jquery/dist/jquery.min.map'
+        ])
         .pipe(concat('libs.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./public'))
 });
+
+// gulp.task('libs', () => {
+//     return gulp.src('./source/libs/jquery/dist/jquery.min.map')
+//         .pipe(concat('lib.min.js'))
+//         .pipe(gulp.dest('./public'))
+// })
 
 /**
  * task for images
@@ -73,11 +83,16 @@ gulp.task('images', () => {
         .pipe(gulp.dest('./public/images'))
 });
 
-gulp.task('watch', ['browser-sync', 'pages', 'styles', 'scripts', 'images'], () => {
+gulp.task('fonts', () => {
+    return gulp.src(['./font-awesome/**/*', ])
+        .pipe(gulp.dest('./public/fonts'))
+});
+
+gulp.task('watch', ['browser-sync', 'pages', 'styles', 'scripts', 'images', 'fonts'], () => {
     gulp.watch(['./source/**/*.styl', './source/styles/*.styl'], ['styles', browserSync.reload]);
     gulp.watch('./source/blocks/**/*.pug', ['pages', browserSync.reload]);
     gulp.watch('./source//blocks/**/*.js', ['scripts', browserSync.reload]);
     gulp.watch('./images/*', ['images']);
 });
 
-gulp.task('default', ['pages', 'styles', 'scripts', 'images', 'watch']);
+gulp.task('default', ['pages', 'styles', 'scripts', 'images', 'fonts', 'watch']);
