@@ -1,3 +1,21 @@
 mixin side-menu()
 	.side-menu
-		| side-menu
+		input(type="checkbox" id="nav-toggle" hidden)
+		
+		nav.nav
+			label(for="nav-toggle" class="nav-toggle" onclick)
+			ul
+				li: a(href="#1")
+					i(class="fa fa-tachometer" aria-hidden="true") Dashboard
+				li
+					a(href="#2") Два
+				li
+					a(href="#3") Три
+				li
+					a(href="#4") Четыре
+				li
+					a(href="#5") Пять
+				li
+					a(href="#6") Шесть
+				li
+					a(href="#7") Семь
