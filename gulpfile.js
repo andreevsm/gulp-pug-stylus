@@ -94,7 +94,7 @@ gulp.task('watch', ['browser-sync', 'pages', 'styles', 'scripts', 'images', 'fon
     gulp.watch(['./source/**/*.styl', './source/styles/*.styl'], ['styles', browserSync.reload]);
     gulp.watch('./source/blocks/**/*.pug', ['pages', browserSync.reload]);
     gulp.watch('./source//blocks/**/*.js', ['scripts', browserSync.reload]);
-    gulp.watch('./images/*', ['images']);
+    gulp.watch('./source/assets/images*', ['images']);
 });
 
 gulp.task('default', ['pages', 'styles', 'images', 'fonts', 'scripts', 'jquery', 'watch']);

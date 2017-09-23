@@ -1,3 +1,3 @@
 $(document).ready(function() {
-    alert('Jquery is working!');
+    $('span').css('border', '1px solid #fff')
 });
