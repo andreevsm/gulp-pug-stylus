@@ -7,16 +7,23 @@ mixin side-menu()
 				div.wrapper
 					ul
 						li: a(href="#1")
-							i(class="fa fa-tachometer" aria-hidden="true") Dashboard
-						li
-							a(href="#2") Два
-						li
-							a(href="#3") Три
-						li
-							a(href="#4") Четыре
-						li
-							a(href="#5") Пять
-						li
-							a(href="#6") Шесть
-						li
-							a(href="#7") Семь
+							i(class="fa fa-tachometer fa-lg" aria-hidden="true") 
+							span Dashboard
+						li: a(href="#2")
+							i(class="fa fa-calendar fa-lg" aria-hidden="true")
+							span Calendar
+						li: a(href="#3")
+							i(class="fa fa-user fa-lg" aria-hidden="true")
+							span Your Profile
+						li: a(href="#4")
+							i(class="fa fa-address-card-o fa-lg" aria-hidden="true")
+							span Addresses
+						li: a(href="#5")
+							i(class="fa fa-git fa-lg" aria-hidden="true")
+							span Your git
+						li: a(href="#6")
+							i(class="fa fa-graduation-cap fa-lg" aria-hidden="true")
+							span Education
+						li: a(href="#7")
+							i(class="fa fa-tasks fa-lg" aria-hidden="true")
+							span Tasks
