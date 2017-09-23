@@ -1,0 +1,17 @@
+{
+  "name": "gulp-pug-stylus",
+  "description": "Template dashboard",
+  "main": "index.js",
+  "authors": [
+    "Sergey Andreev"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/serzhikkk/gulp-pug-stylus",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

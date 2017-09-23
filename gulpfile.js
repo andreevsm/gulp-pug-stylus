@@ -32,10 +32,10 @@ gulp.task('browser-sync', () => {
  * task for processing .styl files
  */
 gulp.task('styles', () => {
-    return gulp.src('./source/styles/main.styl')
+    return gulp.src('./source/assets/styles/main.styl')
         .pipe(stylus())
         .pipe(postcss(postplugins))
-        .pipe(gulp.dest('./public/css'))
+        .pipe(gulp.dest('./public/assets/css'))
 });
 
 /**
@@ -49,29 +49,30 @@ gulp.task('pages', () => {
         .pipe(gulp.dest('./public'))
 });
 
+gulp.task('jquery', () => {
+    return gulp.src(['./bower_components/jquery/dist/jquery.min.js', ])
+        .pipe(concat('jquery.min.js'))
+        .pipe(gulp.dest('./source/assets/js'))
+        .pipe(gulp.dest('./public/assets/js'))
+});
+
 /**
  * task for processing .js files
  */
 gulp.task('scripts', () => {
     return gulp.src(['./source/blocks/**/*.js',
-            './source/libs/jquery/dist/jquery.min.map'
+            './source/assets/js/*.js'
         ])
         .pipe(concat('libs.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./public'))
+        .pipe(gulp.dest('./public/assets/js'))
 });
-
-// gulp.task('libs', () => {
-//     return gulp.src('./source/libs/jquery/dist/jquery.min.map')
-//         .pipe(concat('lib.min.js'))
-//         .pipe(gulp.dest('./public'))
-// })
 
 /**
  * task for images
  */
 gulp.task('images', () => {
-    return gulp.src('./images/*')
+    return gulp.src('./source/assets/images/*')
         .pipe(cache(imagemin({
             interlaced: true,
             progressive: true,
@@ -80,19 +81,20 @@ gulp.task('images', () => {
             }],
             une: [pngquant]
         })))
-        .pipe(gulp.dest('./public/images'))
+        .pipe(gulp.dest('./public/assets/images'))
 });
 
 gulp.task('fonts', () => {
-    return gulp.src(['./font-awesome/**/*', ])
-        .pipe(gulp.dest('./public/fonts'))
+    return gulp.src(['./bower_components/font-awesome/**/*', ])
+        .pipe(gulp.dest('./public/assets/fonts'))
 });
 
-gulp.task('watch', ['browser-sync', 'pages', 'styles', 'scripts', 'images', 'fonts'], () => {
+
+gulp.task('watch', ['browser-sync', 'pages', 'styles', 'scripts', 'images', 'fonts', 'jquery'], () => {
     gulp.watch(['./source/**/*.styl', './source/styles/*.styl'], ['styles', browserSync.reload]);
     gulp.watch('./source/blocks/**/*.pug', ['pages', browserSync.reload]);
     gulp.watch('./source//blocks/**/*.js', ['scripts', browserSync.reload]);
     gulp.watch('./images/*', ['images']);
 });
 
-gulp.task('default', ['pages', 'styles', 'scripts', 'images', 'fonts', 'watch']);
+gulp.task('default', ['pages', 'styles', 'images', 'fonts', 'scripts', 'jquery', 'watch']);
