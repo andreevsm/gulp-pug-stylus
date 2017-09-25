@@ -1,6 +1,6 @@
 mixin content()
 	.content
-		span.title DASHBOARD
+		div.title DASHBOARD
 		div.wra1
 			div#first
 				i(class="fa fa-archive fa-2x" aria-hidden="true")
@@ -23,10 +23,27 @@ mixin content()
 				div.label
 					label TOTAL CANSELED ORDER
 		div.wra2
-			div#fifth
-			//- div#sixth
+			div(id="fifth" style="position: relative;" )
+				span#total_sales TOTAL SALES
+				div.filter
+					span#month This month
+					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
+				canvas#myChart
+			div(id="sixth" style="position: relative" )
+				span#total_sales NEW USERS
+				div.filter
+					span#month This month
+					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
+				canvas#myChart2
 		div.wra3
 			div#seven
+				span#total_sales ORDER BREAKDOWN
+				div.filter
+					span#month This month
+					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
 			div#eigth
-		
-		canvas#myChart
+				span#total_sales COUPON USAGE
+				div.filter
+					span#month This month
+					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
+			

@@ -1,14 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans:300');
+
 .wrape
 	column-count 3
 
 .title
-	font-family 'Lato', sans-serif
+	font-family: 'Lato', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	padding 24px
+	font-size 40px
+	color #fff
+	position relative
+	top 24px
+	left 24px
 
 #first
 	background #58b5fc
 	height 130px
 	width 240px
+
+
+#first:hover
+	transform scale(1.1)
+	transition transform 0.2s ease-in-out 0.5s;
 
 #second
 	width 240px
@@ -103,5 +116,24 @@
 	margin-right 24px
 
 #myChart
-	height 100px
-	width 200px
+#myChart2
+	margin-top 40px
+
+.filter
+	float right
+	margin 24px
+	font-family: 'Lato', sans-serif
+	i
+		color #428DCA
+
+#total_sales
+	margin 24px
+	display inline-block
+	font-size 12px
+	font-family 'Lato', sans-serif
+
+#month
+	padding-right 20px
+	color #979797
+	font-size 12px
+
