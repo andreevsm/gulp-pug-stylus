@@ -28,23 +28,24 @@ mixin content()
 				div.filter
 					span#month This month
 					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
-				canvas#myChart
+				canvas#totalSales
 			div(id="sixth" style="position: relative" )
 				span#total_sales NEW USERS
 				div.filter
 					span#month This month
 					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
-				canvas#myChart2
+				canvas#newUsers
 		div.wra3
-			div#seven
+			div(id="seven")
 				span#total_sales ORDER BREAKDOWN
 				div.filter
 					span#month This month
 					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
-				canvas#myChart3
+				canvas#orderBreakdown
 			div#eigth
 				span#total_sales COUPON USAGE
 				div.filter
 					span#month This month
 					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
-			
+				canvas#couponUsage
+		
