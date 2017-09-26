@@ -4,6 +4,8 @@
     Chart.defaults.global.defaultFontSize = 14;
     Chart.defaults.global.defaultFontColor = '#428DCA';
     Chart.defaults.global.animation.duration = 4000;
+    // Chart.defaults.doughnut.cutoutPercentage = 50
+    // Chart.defaults.global.elements.doughnut.cutoutPercentage = 50;
 
     var massPopChart = new Chart(myChart, {
         type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
@@ -132,7 +134,7 @@
 
                 borderWidth: 2,
 
-                borderColor: '# 777 ',
+                borderColor: '#777 ',
                 hoverBorderWidth: 3,
                 hoverBorderColor: '#000'
             }]
@@ -165,5 +167,66 @@
             tooltips: {
                 enabled: true
             }
+        }
+    });
+
+
+
+
+    var myChart3 = document.getElementById('myChart3').getContext('2d');
+    // Global Opt
+    var massPopChart3 = new Chart(myChart3, {
+        labelAlign: 'center',
+        type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['60% lunch', '40% Dinner'],
+            datasets: [{
+                label: 'Population',
+                data: [
+                    400,
+                    600
+                ],
+                //backgroundColor:'green',
+                backgroundColor: [
+                    'rgba(254, 200, 108, 1)',
+                    'rgba(239,102,117, 1)'
+                ],
+                borderWidth: 0.1,
+                borderColor: '#fff',
+                hoverBorderWidth: 1,
+                hoverBorderColor: '#000'
+            }]
+        },
+        options: {
+            elements: {
+                center: {
+                    text: '50%',
+                }
+            },
+            cutoutPercentage: 75,
+
+            legend: {
+                display: false
+            }
+        }
+    });
+
+    Chart.pluginService.register({
+        beforeDraw: function(chart) {
+            var width = chart.chart.width,
+                height = chart.chart.height,
+                ctx = chart.chart.ctx;
+
+            ctx.restore();
+            var fontSize = (height / 114).toFixed(2);
+            ctx.font = fontSize + "em sans-serif";
+            ctx.textBaseline = "middle";
+
+            var text = "75%",
+                textX = Math.round((width - ctx.measureText(text).width) / 2),
+                textY = height / 2;
+
+            ctx.fillText(text, textX, textY);
+            ctx.save();
         }
     });
