@@ -1,7 +1,5 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
-.nav
+nav
 	width 250px
 	min-width 250px
 	height 100%
@@ -15,6 +13,16 @@
 	transition left 0.3s
 	background #00152c
 	z-index 2000
+	a 
+		display inline-block
+		position relative
+		font-size 1.2em
+		color #dadada
+		width 100%
+		text-decoration none
+		-webkit-transition: width .5s ease
+		-moz-transition: width .5s ease
+		transition: width .5s ease
 
 .nav-toggle
 	position absolute
@@ -24,7 +32,7 @@
 	color #58b5fc
 	cursor pointer
 	font-size 1.5em
-    line-height 1
+  line-height 1
 	z-index 2001
 	-webkit-transition color .25s ease-in-out
 	-moz-transition color .25s ease-in-out
@@ -38,131 +46,15 @@
 	color #1478c4
 
 
-/**
- * Скрытый чекбокс (флажок)
- * невидим и недоступен :)
- * имя селектора атрибут флажка
- */
-
-[id='nav-toggle']
-	position absolute
-	display none
 
 
-/**
- * изменение положения переключателя 
- * при просмотре на мобильных устройствах
- * когда навигация раскрыта, распологаем внутри панели
-*/
+ul
+	display block
+  margin 0
+  padding 0
+  list-style none
 
-[id='nav-toggle']:checked ~ .nav > .nav-toggle
-	left auto
-    right 2px
-	top 1em
-
-
-/**
- * Когда флажок установлен, открывается панель
- * используем псевдокласс:checked
- */
-
-[id='nav-toggle']:checked ~ .nav
-	left 0
-	-webkit-box-shadow: 10px 0px 40px 0px rgba(0,0,0,0.1);
-	-moz-box-shadow: 10px 0px 40px 0px rgba(0,0,0,0.1);
-	box-shadow: 10px 0px 40px 0px rgba(0,0,0,0.1);
-	overflow-y auto
-
-
-/* 
- * смещение контента страницы
- * на размер ширины панели,
- * фишка необязательная, на любителя
-*/
-
-[id='nav-toggle']:checked ~ main > article
-	-webkit-transform: translateX(250px)
-	-moz-transform: translateX(250px)
-	transform: translateX(250px)
-
-
-/*
- * изменение символа переключателя,
- * привычный крестик (MULTIPLICATION X), 
- * вы можете испльзовать любой другой значок
-*/
-
-[id='nav-toggle']:checked ~ .nav > .nav-toggle:after
-	content: '\2715'
-	margin-left 196px
-	margin-bottom 3px
-
-
-/**
- * профиксим баг в Android <= 4.1.2
- * см: http://timpietrusky.com/advanced-checkbox-hack
- */
-// @-webkit-keyframes bugfix {
-//     to {
-//       padding: 0;
-//     }
-// }
-
-
-/**
- * позаботьтимся о средних и маленьких экранах
- * мобильных устройств
- */
-
-// @media screen and (min-width: 320px) {
-//     html,
-//     body {
-//       margin: 0;
-//       overflow-x: hidden;
-//     }
-// }
-
-// @media screen and (max-width: 320px) {
-//     html,
-//     body {
-//       margin: 0;
-//       overflow-x: hidden;
-//     }
-//     .nav {
-//       width: 100%;
-//       box-shadow: none
-//     }
-// }
-
-
-/**
- * Формируем стиль заголовка (логотип) панели 
-*/
-
-
-
-/*плавное появление заголовка (логотипа) при раскрытии панели */
-[id='nav-toggle']:checked ~ .nav h2 
-	opacity 1
-	transform scale(1, 1)
-	-ms-transform scale(1, 1)
-	-moz-transform scale(1, 1)
-	-webkit-transform scale(1, 1)
-
-
-/**
- * формируем непосредственно само меню
- * используем неупорядоченный список для пунктов меню
- * прикрутим трансфомации и плавные переходы
- */
-
-.nav > ul
-    display block
-    margin 0
-    padding 0
-    list-style none
-
-.nav > ul > li
+nav > ul > li
 	line-height 2.5
 	opacity 0
 	-webkit-transform translateX(-50%)
@@ -178,125 +70,10 @@
 	transition opacity .5s .1s
 	transform .5s .1s
 
-[id='nav-toggle']:checked ~ .nav > ul > li
-	opacity 1
-	-webkit-transform translateX(0)
-	-moz-transform translateX(0)
-	-ms-transform translateX(0)
-	transform translateX(0)
-
-
-/* определяем интервалы появления пунктов меню */
-
-.nav > ul > li:nth-child(2) 
-	-webkit-transition opacity .5s .2s
-	-webkit-transform .5s .2s
-	transition opacity .5s .2s
-	transform .5s .2s
-
-.nav > ul > li:nth-child(3)
-	-webkit-transition opacity .5s .3s
-	-webkit-transform .5s .3s
-	transition opacity .5s .3s
-	transform .5s .3s
-
-.nav > ul > li:nth-child(4)
-	-webkit-transition opacity .5s .4s
-	-webkit-transform .5s .4s
-	transition opacity .5s .4s
-	transform .5s .4s
-
-.nav > ul > li:nth-child(5)
-	-webkit-transition opacity .5s .5s
-	-webkit-transform .5s .5s
-	transition opacity .5s .5s
-	transform .5s .5s
-
-.nav > ul > li:nth-child(6)
-	-webkit-transition opacity .5s .6s
-	-webkit-transform .5s .6s
-	transition opacity .5s .6s
-	transform .5s .6s
-
-.nav > ul > li:nth-child(7)
-	-webkit-transition opacity .5s .7s
-	-webkit-transform .5s .7s
-	transition opacity .5s .7s
-	transform .5s .7s
-
-
-/**
- * оформление ссылок пунктов меню
- */
-
-.nav > ul > li > a 
-	display inline-block
-	position relative
-	font-size 1.2em
-	color #dadada
-	width 100%
-	text-decoration none
-	-webkit-transition: width .5s ease
-	-moz-transition: width .5s ease
-	transition: width .5s ease
-
-
-/**
- * состояние ссылок меню при наведении
- */
-
-.nav > ul > li > a:hover
-.nav > ul > li > a:focus
-	color white
-	padding-left 15px
-
-/**
- * линия подчеркивания ссылок меню
- */
-.nav > ul > li > a:before 
-	content ''
-	display block
-	position absolute
-	right 0
-	bottom 0
-	height 1px
-	width 100%
-	-webkit-transition width 0s ease
-	transition width 0s ease
-
-.nav > ul > li > a:after
-	content ''
-	display block
-	position absolute
-	left 0
-	bottom 0
-	height 1px
-	width 100%
-	background #3bc1a0
-	-webkit-transition width .5s ease
-	transition width .5s ease
-
-
-/**
- * анимируем линию подчеркивания 
- * ссылок при наведении
- */
-
-.nav > ul > li > a:hover:before
-	width 0%
-	background #3bc1a0
-	-webkit-transition 0% .5s ease
-	transition 0% .5s ease
-
-.nav > ul > li > a:hover:after
-	width 0%
-	background transparent
-	-webkit-transition 0% 0s ease
-	transition 0% 0s ease
-
 .wrapper
 	line-height 50px
 	margin-top 120px
+
 	ul li:active
 		border-left 6px solid #58b5fc
 		-webkit-transition: border-left .5s ease-in-out
@@ -328,12 +105,37 @@ ul
 	list-style-type none
 	li
 		height 45px
-	li a
-		margin-left 30px
-		color #58b5fc
-		text-decoration none
+		a
+			margin-left 30px
+			color #58b5fc
+			text-decoration none
+			span
+				padding-left 15px
+				font-family: 'Lato', sans-serif;
+				font-size 13px
 
-		span
-			padding-left 15px
-			font-family: 'Lato', sans-serif;
-			font-size 13px
+[id='nav-toggle']
+	position absolute
+	display none
+
+[id='nav-toggle']:checked ~ nav > .nav-toggle
+	left auto
+  right 2px
+	top 1em
+
+[id='nav-toggle']:checked ~ nav
+	left 0
+	-webkit-box-shadow: 10px 0px 40px 0px rgba(0,0,0,0.1);
+	-moz-box-shadow: 10px 0px 40px 0px rgba(0,0,0,0.1);
+	box-shadow: 10px 0px 40px 0px rgba(0,0,0,0.1);
+	overflow-y auto
+
+[id='nav-toggle']:checked ~ main > article
+	-webkit-transform: translateX(250px)
+	-moz-transform: translateX(250px)
+	transform: translateX(250px)
+
+[id='nav-toggle']:checked ~ nav > .nav-toggle:after
+	content: '\2715'
+	margin-left 196px
+	margin-bottom 3px

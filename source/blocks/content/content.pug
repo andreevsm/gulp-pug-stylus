@@ -1,51 +1,53 @@
 mixin content()
 	.content
 		div.title DASHBOARD
-		div.wra1
-			div#first
+
+		div(class="content statistic-blocks")
+			div(class="block order")
 				i(class="fa fa-archive fa-2x" aria-hidden="true")
-				span#sp 220
+				span#count 220
 				div.label
 					label TOTAL ORDER
-			div#second
+			div(class="block completed-order")
 				i(class="fa fa-check-circle-o fa-2x" aria-hidden="true")
-				span#sp 180
+				span#count 180
 				div.label
 					label TOTAL COMPLETED ORDER
-			div#third
+			div(class="block pending-order")
 				i(class="fa fa-pencil-square-o fa-2x" aria-hidden="true")
-				span#sp 20
+				span#count 20
 				div.label
 					label TOTAL PENDING ORDER
-			div#forth
+			div(class="block canseled-order")
 				i(class="fa fa-line-chart fa-2x" aria-hidden="true")
-				span#sp 20
+				span#count 20
 				div.label
 					label TOTAL CANSELED ORDER
-		div.wra2
-			div(id="fifth" style="position: relative;" )
+
+		div(class="line-charts")
+			div(class="chart-block" style="position: relative")
 				span#total_sales TOTAL SALES
-				div.filter
+				div.sort
 					span#month This month
 					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
 				canvas#totalSales
-			div(id="sixth" style="position: relative" )
+			div(class="chart-block" style="position: relative")
 				span#total_sales NEW USERS
-				div.filter
+				div.sort
 					span#month This month
 					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
 				canvas#newUsers
-		div.wra3
-			div(id="seven")
+				
+		div(class="other-charts")
+			div(class="chart-block")
 				span#total_sales ORDER BREAKDOWN
-				div.filter
+				div.sort
 					span#month This month
 					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
 				canvas#orderBreakdown
-			div#eigth
+			div(class="chart-block")
 				span#total_sales COUPON USAGE
-				div.filter
+				div.sort
 					span#month This month
 					i(class="fa fa-angle-down fa-lg", aria-hidden="true")
 				canvas#couponUsage
-		
